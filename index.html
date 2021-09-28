@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>
+		asmr 만들기
+	</title>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Ultra&display=swap" rel="stylesheet">
+	<style type="text/css">
+		img{display: block;}
+	
+		body{background-size: cover;
+			font-family: 'Ultra', serif;}
+		
+		.morning
+		{background: #ffe773; width:100px; height: 40px;
+			font-size: 15px; color: #ff765b;
+		text-align: center; border : 0px; border-radius: 18px; box-shadow: 0px 0px 6px #f6ce6d;
+		z-index:10;
+	font-family: 'Ultra', serif;}
+
+		.morning:hover{color: #8ec768;}
+		.night:hover{color: #8ec768;}
+
+		.night
+		{background: #ffe773; width:100px; height: 40px;
+			font-size: 16px; color:#ff765b;
+		text-align: center; border : 0px; border-radius: 18px; box-shadow: 0px 0px 6px #f6ce6d;
+		z-index:9;
+	font-family: 'Ultra', serif;}
+
+		.stop
+		{background: #fbe1aa; width:60px; height: 15px;
+			font-size: 5px; color: #ADAA9E;
+		text-align: center; border : 0px; border-radius: 9px; box-shadow: 0px 0px 6px #f6ce6d;
+		z-index:8;
+	font-family: 'Ultra', serif;}
+
+		.absolute{display: block; position: absolute;}
+		.top{z-index:1;} .title{z-index:5;} 
+		.range{z-index:7;
+			-webkit-appearance: none;
+			
+            background-color: #ffc47e;
+            box-shadow: 0px 0px 5px #ffc47e;
+            height: 20px;
+            width: 350px;
+            border-radius: 10px;
+            z-index: 10;
+           }
+
+	</style>
+</head>
+<body>
+	<body background="mov.gif";>
+
+	<input id="vol" type="range" class="range absolute" max="100" min="0" value="100" 
+	style="top:565px; left:650px;" >
+	<input id="vol2" type="range" class="range absolute" max="100" min="0" value="100" 
+	style="top:617px; left:650px;">
+
+<div>
+	<button id="morningBut" class="morning absolute" style="top:555px; left:490px;" z-index:10;>Morning</button>
+	<audio id="morningSnd"src="morning.mp3"></audio>
+</div>
+
+<div>
+	<button id="nightBut" class="night absolute" style="top:610px; left:490px;">Night</button>
+	<audio id="nightSnd"src="night.mp3"></audio>
+</div>
+<div>
+	<button id="stopBut" class="stop absolute" style="top:660px; left:945px;">stop</button>
+</div>
+
+	<img src="3.png" class="top absolute" width="800px"style="top:415px; left:380px;">
+	<img src="title.png" class="title absolute" width="400px"style="top:25px; left:570px;">
+
+	
+	<script type="text/javascript">
+		vol.oninput = function(){
+			morningSnd.volume = vol.value / 100;
+		}
+		vol2.oninput = function(){
+			nightSnd.volume = vol2.value / 100;
+		}
+
+		var state = "play"
+		morningBut.onclick = function(){
+			if(state == "play")
+			{morningSnd.play();
+				state = "pause"} 
+				else {morningSnd.pause();
+					state = "play"}
+				}
+
+		var state = "play"
+		nightBut.onclick = function(){
+			if(state == "play")
+			{nightSnd.play();
+				state = "pause"} 
+				else {nightSnd.pause();
+					state = "play"}
+				}
+
+		stopBut.onclick = function(){
+			morningSnd.pause();
+			nightSnd.pause();}	
+
+	</script>
+
+</body>
+</html>
